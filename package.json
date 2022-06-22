@@ -1,10 +1,9 @@
 {
   "name": "hardhat-project",
   "scripts": {
-    "deploy:local": "npx hardhat run scripts/deploy.ts --network localhost",
-    "deploy:rinkeby": "npx hardhat run scripts/deploy-neon-token.ts --network rinkeby",
-    "deploy:harmonyTestnet": "npx hardhat run scripts/deploy-neon-token.ts --network harmonyTestnet",
-    "deploy:harmonyDevnet": "npx hardhat run scripts/deploy-neon-token.ts --network harmonyDevnet"
+    "deploy:rinkeby": "npx hardhat run scripts/deploy.ts --network rinkeby",
+    "deploy:harmonyTestnet": "npx hardhat run scripts/deploy.ts --network harmonyTestnet",
+    "deploy:harmonyDevnet": "npx hardhat run scripts/deploy.ts --network harmonyDevnet"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.5",
