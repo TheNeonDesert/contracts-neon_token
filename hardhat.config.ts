@@ -24,29 +24,18 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 // Go to https://hardhat.org/config/ to learn more
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.0", // TODO make all contracts fixed to a specific Solidity version, right?
-  defaultNetwork: "hardhat",
+  solidity: "0.8.1",
+  defaultNetwork: "default",
   networks: {
     hardhat: {
       chainId: 31337,
     },
-    rinkeby: {
-      url: `https://eth-rinkeby.alchemyapi.io/v2/${process.env.RINKEBY_ALCHEMY_API_KEY}`,
-      accounts: [
-        process.env.RINKEBY_PRIVATE_KEY ? process.env.RINKEBY_PRIVATE_KEY : "",
-      ],
-    },
-    harmonyTestnet: {
-      url: `https://api.s0.b.hmny.io`,
-      accounts: [
-        process.env.HARMONY_PRIVATE_KEY ? process.env.HARMONY_PRIVATE_KEY : "",
-      ],
-    },
-    harmonyDevnet: {
-      url: `https://api.s0.ps.hmny.io`,
-      accounts: [
-        process.env.HARMONY_PRIVATE_KEY ? process.env.HARMONY_PRIVATE_KEY : "",
-      ],
+    default: {
+      url: process.env.RPC_URL,
+      accounts:
+        process.env.DEPLOYER_PRIVATE_KEY !== undefined
+          ? [process.env.DEPLOYER_PRIVATE_KEY]
+          : [],
     },
   },
   gasReporter: {
