@@ -25,19 +25,28 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
 
 const config: HardhatUserConfig = {
   solidity: "0.8.1",
-  defaultNetwork: "default",
+  // defaultNetwork: "default",
+  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
-      chainId: 31337,
+      // Configuration specific to the Hardhat network
+      chainId: 1337, // Default chain ID for Hardhat network
+      // You can specify additional Hardhat network config here
     },
-    default: {
-      url: process.env.RPC_URL,
-      accounts:
-        process.env.DEPLOYER_PRIVATE_KEY !== undefined
-          ? [process.env.DEPLOYER_PRIVATE_KEY]
-          : [],
-    },
+    // Define other networks here as needed
   },
+  // networks: {
+  //   hardhat: {
+  //     chainId: 31337,
+  //   },
+  //   default: {
+  //     url: process.env.RPC_URL,
+  //     accounts:
+  //       process.env.DEPLOYER_PRIVATE_KEY !== undefined
+  //         ? [process.env.DEPLOYER_PRIVATE_KEY]
+  //         : [],
+  //   },
+  // },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
     currency: "USD",
